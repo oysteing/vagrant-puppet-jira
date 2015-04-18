@@ -1,27 +1,22 @@
 vagrant-puppet-jira
 ===================
 
-Vagrant example on installing jira using puppet
+Install JIRA on Ubuntu 14.04 using Vagrant and Puppet
 
-Example
+Install
 -------
-```sh
-$ git clone https://github.com/mkrakowitzer/vagrant-puppet-jira.git
-$ cd vagrant-puppet-jira
-$ sudo gem install librarian-puppet --verbose
-$ librarian-puppet install
-$ wget -O files/atlassian-jira-6.3.4a.tar.gz \
-  http://www.atlassian.com/software/stash/downloads/binary/atlassian-jira-6.3.4a.tar.gz
+Add a Hiera file `hiera/credentials.yaml` with the database password. Example:
+```yaml
+jira::dbpassword: examplepass
 ```
-Download jdk-7u65-linux-x64.tar.gz from here and copy into files directory:
 
-http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html
- 
 ```sh
-vagrant up jira1 (CentOS 6)
-vagrant up jira2 (CentOS 5)
-vagrant up jira3 (Ubuntu 12.04)
+$ sudo apt-get install librarian-puppet
+$ librarian-puppet install
+vagrant up
 ```
+
+Rerun Puppet from inside the guest with `sudo puppet apply --modulepath /vagrant/modules --hiera_config /vagrant/hiera.yaml /vagrant/manifests/site.pp`
 
 License
 -------
@@ -30,3 +25,4 @@ The MIT License (MIT)
 Author
 ------------
 * Merritt Krakowitzer merritt@krakowitzer.com
+* Øystein gisnås oystein@gisnas.net

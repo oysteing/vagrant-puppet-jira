@@ -1,6 +1,7 @@
+*~
 modules
-files/*.gz
 Puppetfile.lock
 .librarian/
 .tmp/
 .vagrant/
+hiera/credentials.yaml
